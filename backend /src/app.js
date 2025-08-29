@@ -1,8 +1,26 @@
 const express = require('express')
+const morgan = require('morgan')
+const helmet = require('helmet')
+const compression = require('compression')
 const app = express()
 const port = 3000
 
+
+//MIDDLEWARE
+// security 
+app.use(helmet())
+// moniter app 
+app.use(morgan('dev'))
+//compress response
+app.use(compression())
+
+
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    const strContent = 'Hello World! '.repeat(1000000)
+    const result = strContent.length
+    return res.status(200).json({
+        message: `Hello World! ${result}`,
+        metatdata: strContent
+    })
 })
 module.exports = app;
