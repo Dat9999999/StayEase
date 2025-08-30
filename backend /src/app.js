@@ -3,7 +3,6 @@ const morgan = require('morgan')
 const helmet = require('helmet')
 const compression = require('compression')
 const app = express()
-const port = 3000
 
 
 //MIDDLEWARE
@@ -13,6 +12,10 @@ app.use(helmet())
 app.use(morgan('dev'))
 //compress response
 app.use(compression())
+
+
+// DATABASE
+require('./dbs/connect.mongo')
 
 
 app.get('/', (req, res) => {
