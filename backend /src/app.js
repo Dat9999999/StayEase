@@ -16,7 +16,8 @@ app.use(compression())
 
 // DATABASE
 require('./dbs/connect.mongo')
-
+const countConnection = require('./helpers/check.connection')
+countConnection()
 
 app.get('/', (req, res) => {
     const strContent = 'Hello World! '.repeat(1000000)
