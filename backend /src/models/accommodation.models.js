@@ -20,7 +20,7 @@ var accommodationSchema = new mongoose.Schema({
     },
     rooms: {
         type: Number,
-        required: true,
+        required: false,
         min: 1,
     },
     name: {
