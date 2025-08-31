@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const userController = require('../controllers/user.controller');
+const createRoute = require('../utils/createRoute');
+
+const userRoutes = createRoute(userController);
 
 // Define user-related routes
-router.post('/', userController.createUser);
-router.get('/:id', userController.getUserById);
-router.put('/:id', userController.updateUser);
-router.delete('/:id', userController.deleteUser);
+// CRUD routes are handled by createRoute
+router.use(userRoutes);
 
 module.exports = router;
